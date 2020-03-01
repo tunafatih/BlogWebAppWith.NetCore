@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FatihTuna.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+
+
+
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title);
+                
+
+            </td>
+            <td>
+                @Html.Raw(item.Content);
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tags)
+
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-name="@item.Title">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

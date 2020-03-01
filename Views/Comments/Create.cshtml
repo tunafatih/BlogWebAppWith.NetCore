@@ -1,0 +1,47 @@
+﻿@model FatihTuna.Models.Comment
+
+@{
+    ViewData["Title"] = "Yorum";
+}
+
+
+</br><br/><br />
+<h2>Yorumunuz</h2>
+
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nick" class="control-label"></label>
+                <input asp-for="Nick" class="form-control" />
+                <span asp-validation-for="Nick" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Yorum" class="control-label"></label>
+                <textarea asp-for="Yorum" maxlength="250" class="form-control" rows="5" cols="50"></textarea>
+                <span asp-validation-for="Yorum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-controller="Comments" asp-action="Create" type="submit" value="Yorum Yap" class="btn btn-default" />
+               
+            </div>
+            <div class="form-group" style="visibility:hidden">
+                <label asp-for="Konu" class="control-label"></label>
+                <input asp-for="Konu" value="@ViewBag.KonuId" class="form-control" />
+                <span asp-validation-for="Konu" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @*<a asp-controller="Posts" asp-action="Index">Back to List</a>*@
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FatihTuna.Models.Comment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Yorum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nick)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Konu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yorum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nick)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Konu)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,116 @@
+﻿
+
+@{
+    ViewData["Title"] = ViewBag.Baslik;
+}
+
+@model FatihTuna.Models.MultipleModel
+
+
+
+<h2>Details</h2>
+
+<div class="col-sm-9">
+    <dl class="dl-horizontal">
+         
+
+        <h1>@ViewBag.Baslik</h1>
+        <h6>
+            <strong><img src="~/images/datelogo.jpg" alt="datelogo" style="width:20px;height:20px;"> @ViewBag.Date</strong>
+            <strong><img src="https://middle.pngfans.com/20190523/hg/add-user-logo-png-computer-icons-user-clipart-afb019e04822807b.jpg" alt="authorlogo" style="width:20px;height:20px;"> @ViewBag.Author</strong>
+        </h6>
+
+        <p>@Html.Raw(ViewBag.Content)</p>
+        <hr id="hp1" runat="server" style="width:100%; height: 0.5px; background: #5f5555; color:#5f5555;" />
+    </dl>
+    <h2><a asp-controller="Comments" asp-action="Create" asp-route-konu="@ViewBag.Numara">Yorum Yap</a></h2>
+
+    <br /> <br /> 
+    <table>
+        <tbody>
+            @foreach (var item in Model.comments.Reverse())
+            {
+                if (item.Konu == ViewBag.Numara)
+                {
+                    <tr>
+                        <td>
+                            <p style="float: left; clear: left"><img src="~/images/user.jpg" alt="Avatar" class="img-responsive"></p>
+                            <b>@Html.DisplayFor(modelItem => item.Nick)</b>
+                            <p>@Html.DisplayFor(modelItem => item.Yorum)</p>
+                        </td>
+
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+
+
+
+
+</div>
+<div class="col-sm-3">
+        @*<strong>Arama Butonu Yeri</strong>*@
+        
+        
+
+        <h3><p><strong>Yazılar: </strong></p></h3>
+        @foreach (var item in Model.posts)
+        {
+            if (item.Date.Month == 1)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Ocak @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 2)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Şubat @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 3)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Mart @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 4)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Nisan @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 5)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Mayıs @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 6)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Haziran @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 7)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Temmuz @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 8)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Ağustos @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 9)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Eylül @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 10)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Ekim @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 11)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Kasım @item.Date.Year</a></p></strong>
+            }
+            if (item.Date.Month == 12)
+            {
+            <strong><p><a asp-controller="Posts" asp-action="Details" asp-route-name="@item.Title" style="color:black">@Html.DisplayFor(modelItem => item.Title) - Aralık @item.Date.Year</a></p></strong>
+            }
+        }
+        
+
+    </div>
+
+
+
+
